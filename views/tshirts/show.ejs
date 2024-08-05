@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= tshirt.name %></title>
+  </head>
+  <body>
+    <h1><%= tshirt.name %></h1>
+    <form action="/tshirts/<%=tshirt._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= tshirt.name %></button>
+      </form>
+      <a href="/tshirts/<%= tshirt._id %>/edit">Edit <%= tshirt.name %></a>
+    <a href="/tshirts/">Back to T-shirts</a>
+    <a href="/">Back to Home</a>
+  </body>
+</html>
