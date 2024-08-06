@@ -7,11 +7,14 @@
   </head>
   <body>
     <h1>All T-Shits</h1>
+    <% if (message) { %>
+      <p><%= message %></p>
+    <% } %>
     <ul>
-        <% tshirts.forEach(tshirt => { %>
-          <li><a href="/tshirts/<%= tshirt._id %>"> <%= tshirt.name %></a></li>
-        <% }) %>
-      </ul>
+      <% tshirts.forEach(tshirt => { %>
+        <li><a href="/tshirts/<%= tshirt._id %>"> <%= tshirt.name %></a></li>
+      <% }); %>
+    </ul>
       
 <a href="/tshirts/new">Add New T-Shirt</a>
 <a href="/">Back to Home</a>

@@ -1,0 +1,13 @@
+<nav>
+    <a href="/">Home</a>
+    <a href="/tshirts">T-Shirts</a>
+    <% if (user) { %>
+      <span>Welcome, <%= user.username %></span>
+      <a href="/auth/logout">Logout</a>
+    <% } else { %>
+      <a href="/auth/login">Login</a>
+      <a href="/auth/register">Sign Up</a>
+    <% } %>
+  </nav>
+  <hr>
+  
