@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 
 const tshirtSchema = new mongoose.Schema({
@@ -6,6 +6,6 @@ const tshirtSchema = new mongoose.Schema({
     color: String,
   })
 
-  const Tshirt = mongoose.model("Tshirt", tshirtSchema); 
+  const Tshirt = mongoose.model("Tshirt", tshirtSchema)
 
-  module.exports = Tshirt;
+  module.exports = Tshirt

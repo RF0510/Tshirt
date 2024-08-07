@@ -6,12 +6,11 @@
     <title><%= tshirt.name %></title>
   </head>
   <body>
+    <%- include('../_header') %>
     <h1><%= tshirt.name %></h1>
     <form action="/tshirts/<%=tshirt._id%>?_method=DELETE" method="POST">
         <button type="submit">Delete <%= tshirt.name %></button>
       </form>
       <a href="/tshirts/<%= tshirt._id %>/edit">Edit <%= tshirt.name %></a>
-    <a href="/tshirts/">Back to T-shirts</a>
-    <a href="/">Back to Home</a>
   </body>
 </html>

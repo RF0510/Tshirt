@@ -7,6 +7,17 @@
   </head>
   <body>
     <h1>Create a new account!</h1>
+    
+    <% if (message) { %>
+      <div id="message"><%= message %></div>
+      <script>
+          setTimeout(() => {
+              document.getElementById('message').style.display = 'none';
+              window.location.href = '/auth/sign-up';
+          }, 3000); // 3000ms = 3 seconds
+      </script>
+  <% } %>
+  
     <form action="/auth/sign-up" method="POST">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" />

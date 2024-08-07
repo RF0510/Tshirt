@@ -92,10 +92,13 @@ function isAuthenticated(req, res, next) {
 }
 
 // Middleware to make the user available in all templates
+
 app.use((req, res, next) => {
     res.locals.user = req.user;
-    next();
-  });
+    next()
+  })
+
+  
   
   // Your routes here
   app.get('/', async (req, res) => {
@@ -112,11 +115,8 @@ app.use((req, res, next) => {
 // Public routes
 app.get('/', async (req, res) => {
   res.render('index.ejs');
-});
+})
 
-app.get('/tshirts/new', (req, res) => {
-  res.render('tshirts/new.ejs');
-});
 
 app.post('/tshirts', async (req, res) => {
   await Tshirt.create(req.body);
@@ -127,20 +127,29 @@ app.get('/tshirts', async (req, res) => {
   const allTshirts = await Tshirt.find();
   const message = req.query.message;
   res.render('tshirts/index.ejs', { tshirts: allTshirts, message });
-});
+})
+
+
+
+
+// Protected routes
+app.use(isAuthenticated)
+
+app.get('/tshirts/new', (req, res) => {
+    res.render('tshirts/new.ejs')
+  })
 
 app.get('/tshirts/:tshirtId', async (req, res) => {
   const foundTshirt = await Tshirt.findById(req.params.tshirtId);
   res.render('tshirts/show.ejs', { tshirt: foundTshirt });
-});
+})
 
-// Protected routes
-app.use(isAuthenticated);
 
 app.delete('/tshirts/:tshirtId', async (req, res) => {
-  await Tshirt.findByIdAndDelete(req.params.tshirtId);
+  await Tshirt.findByIdAndDelete(req.params.tshirtId)
   res.redirect('/tshirts');
-});
+})
+
 
 app.get('/tshirts/:tshirtId/edit', async (req, res) => {
   const foundTshirt = await Tshirt.findById(req.params.tshirtId);
@@ -152,7 +161,9 @@ app.get('/tshirts/:tshirtId/edit', async (req, res) => {
 app.put('/tshirts/:tshirtId', async (req, res) => {
   await Tshirt.findByIdAndUpdate(req.params.tshirtId, req.body);
   res.redirect(`/tshirts/${req.params.tshirtId}`);
-});
+})
+
+
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');

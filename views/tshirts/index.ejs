@@ -6,18 +6,19 @@
     <title>T-Shirts Index</title>
   </head>
   <body>
-    <h1>All T-Shits</h1>
+    <%- include('../_header') %>
+    
     <% if (message) { %>
       <p><%= message %></p>
     <% } %>
+    
+    <h1>All T-Shits</h1>
     <ul>
       <% tshirts.forEach(tshirt => { %>
         <li><a href="/tshirts/<%= tshirt._id %>"> <%= tshirt.name %></a></li>
       <% }); %>
     </ul>
-      
-<a href="/tshirts/new">Add New T-Shirt</a>
-<a href="/">Back to Home</a>
-
+    <p> Click on any T-Shirt to edit or delete</p>
+    <a href="tshirts/new">Add a T-shirt</a>
   </body>
 </html>
