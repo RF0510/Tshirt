@@ -1,16 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>T-Shirt</title>
-  </head>
-  <body>
-    <%- include('_header', { user: user }) %>
-    <h1>Welcome to the T-shirt app!</h1>
-    <p>This app will allow you to manage all of your T-Shirt inventory.</p>
-    <p> You can brows through the app without logging in, but you will not be able to create, update, or delete.</p>
-    
-   
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>T-Shirt</title>
+  <style>
+    .video-container {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 200px);
+      /* 100vh minus the height of the header */
+      overflow: hidden;
+    }
+
+    /* Video styling */
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+
+
+    h1,
+    p {
+      margin: 10px 0;
+      color: red;
+    }
+
+    .wel {
+      position: absolute;
+      left: 0;
+      top: 3%;
+      transform: translateY(-50%);
+      z-index: 2;
+      padding: 20px;
+      animation: moveWord 15s ease-in-out forwards;
+    }
+
+    @keyframes moveWord {
+      0% {
+        left: 0;
+        /* Start from the left edge */
+      }
+
+      50% {
+        left: calc(70% - 100px);
+        /* Move to the right edge minus a small offset */
+      }
+
+      100% {
+        left: 50%;
+        /* End at the center */
+        transform: translateX(-50%) translateY(-50%);
+        /* Center the word horizontally */
+      }
+    }
+
+    .scroll-text {
+  position: absolute;
+  bottom: 20px;
+  left: -100%;
+  width: 200%; /* Double the width to accommodate the full movement */
+  white-space: nowrap;
+  animation: scrollText 25s linear infinite;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  z-index: 3;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  30% {
+    transform: translateX(55%);
+  }
+  50% {
+    transform: translateX(55%);
+  }
+  75% {
+    transform: translateX(55%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+  </style>
+</head>
+
+<body>
+  <%- include('_header', { user: user }) %>
+
+    <div class="video-container">
+      <video autoplay muted loop class="background-video">
+        <source src="/videos/tshirt.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="wel">
+        <h1>Welcome to the T-Shirt app!</h1>
+      </div>
+
+      <div class="scroll-text">
+        <p>This app will allow you to manage all of your T-Shirt inventory.
+          You can brows through the app without logging in, but you will not be able to create, update, or delete.</p>
+      </div>
+
+
+</body>
+
 </html>

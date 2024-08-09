@@ -3,14 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css">
     <title><%= tshirt.name %></title>
+    <style>
+      body {
+        background-color: black;
+        /* Black background for consistency */
+        font-family: Arial, sans-serif;
+      }
+  
+      h1 {
+        text-align: center;
+        color: red;
+        /* Red color to match your other pages */
+        margin-top: 30px;
+      }
+  
+      .button-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+  
+      button {
+        background-color: whitesmoke;
+        color: red;
+        border: none;
+        padding: 10px 20px;
+       
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 18px;
+      }
+  
+      button:hover {
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+  
+    </style>
   </head>
   <body>
     <%- include('../_header') %>
+
     <h1><%= tshirt.name %></h1>
+
+    <div class="button-container">
     <form action="/tshirts/<%=tshirt._id%>?_method=DELETE" method="POST">
         <button type="submit">Delete <%= tshirt.name %></button>
       </form>
-      <a href="/tshirts/<%= tshirt._id %>/edit">Edit <%= tshirt.name %></a>
+<br><br>
+      <button onclick="window.location.href='/tshirts/<%= tshirt._id %>/edit' ; " class="GFG">Edit <%= tshirt.name %></button>
+    </div>
   </body>
 </html>

@@ -1,0 +1,55 @@
+header {
+  background-image: url('/images/header.jpg');
+  background-size: cover; /* Make sure the image covers the entire header */
+  background-position: center; /* Center the image */
+  height: 200px; /* Adjust the height as needed */
+  position: relative; /* Set the header to relative positioning */
+}
+
+nav {
+  position: absolute; /* Position the nav absolutely within the header */
+  bottom: 10px; /* Position the nav 10px from the bottom of the header */
+  left: 50%; /* Center the nav horizontally */
+  transform: translateX(-50%); /* Adjust for the nav’s width to center it */
+  z-index: 10; /* Bring the nav in front of the header image */
+}
+
+nav button {
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: red;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease;
+  font-size: 20px;
+}
+
+nav button:hover {
+  background-color: rgba(0, 0, 0, 0.7); 
+}
+
+nav span {
+  background-color: black;
+  color: red; /* User welcome text color */
+  font-size: 20px;
+  margin-right: 20px;
+  padding: 5px 10px; /* Add some padding to the text */
+  border-radius: 5px; /* Optional: rounded corners */
+}
+body {
+  
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Optional: set a global font */
+}
+
+h1, p {
+  color: #333; /* Optional: set a default text color for headings and paragraphs */
+  margin: 20px;
+}
+
+.container {
+  padding: 20px;
+}

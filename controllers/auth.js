@@ -4,6 +4,7 @@ const express = require("express")
 const passport = require("passport")
 const router = express.Router()
 
+// Logout route
 router.get('/logout', (req, res) => {
   req.logout((err) => {
     if (err) {
@@ -14,11 +15,13 @@ router.get('/logout', (req, res) => {
   })
 })
 
+// Sign-up GET route
 router.get("/sign-up", (req, res) => {
   const message = req.query.message;
-  res.render("auth/sign-up.ejs", { message })
+  res.render("auth/sign-up.ejs", { message, user: req.user})
 })
 
+// Sign-up POST route
 router.post("/sign-up", async (req, res) => {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username })
@@ -41,26 +44,28 @@ router.post("/sign-up", async (req, res) => {
   }
 })
 
+// Login GET route
 router.get("/login", (req, res) => {
   const message = req.query.message;
-  res.render("auth/login.ejs", { message })
+  res.render("auth/login.ejs", { message, user: req.user })
 })
 
+// Login POST route
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
     }
     if (!user) {
-      return res.redirect("/auth/login");
+      return res.redirect("/auth/login")
     }
     req.logIn(user, (err) => {
       if (err) {
         return next(err);
       }
-      return res.redirect(`/tshirts?message=Thank You for logging in, ${user.username}!`);
-    });
+      return res.redirect(`/tshirts?message=Thank You for logging in, ${user.username}!`)
+    })
   })(req, res, next);
-});
+})
 
-module.exports = router;
+module.exports = router

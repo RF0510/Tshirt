@@ -1,13 +1,14 @@
-<nav>
-    <a href="/">Home</a>
-    <a href="/tshirts">T-Shirts</a>
+<header>
+  <div class="header-image"></div>
+  <nav>
+    <button onclick="window.location.href='/' ; " class="GFG">Home</button>
+    <button onclick="window.location.href='/tshirts' ; " class="GFG">All T-Shirts</button>
     <% if (user) { %>
       <span>Welcome, <%= user.username %></span>
-      <a href="/auth/logout">Logout</a>
-    <% } else { %>
-      <a href="/auth/login">Login</a>
-      <a href="/auth/sign-up">Sign Up</a>
-    <% } %>
+      <button onclick="window.location.href='/auth/logout' ; " class="GFG">Logout</button>
+      <% } else { %>
+        <button onclick="window.location.href='/auth/login' ; " class="GFG">Login</button>
+        <button onclick="window.location.href='/auth/sign-up' ; " class="GFG">Sign-Up</button>
+        <% } %>
   </nav>
-  <hr>
-  
+</header> 

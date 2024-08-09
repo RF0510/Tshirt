@@ -1,5 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Edit T-Shirt</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: red;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .back-button {
+            margin-top: 20px;
+            background-color: transparent;
+            border: 2px solid red;
+            color: red;
+        }
+
+        .back-button:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+        button.GFG:hover {
+      background-color: rgba(0, 0, 255, 0.9);
+      /* Darker on hover */
+    }
+    </style>
 <body>
-    
     <h1>Edit <%= tshirt.name %></h1>
 
     <form action="/tshirts/<%=tshirt._id%>?_method=PUT" method="POST">
@@ -11,6 +84,7 @@
     
       <button type="submit">Update T-Shirt</button>
     </form>
-    <a href="/tshirts">Back to T-Shirts</a>
+
+    <button class="back-button" onclick="window.location.href='/tshirts' ; ">All T-Shirts</button>
   </body>
-  
+  </html>

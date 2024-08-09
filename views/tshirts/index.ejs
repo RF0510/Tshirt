@@ -1,24 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>T-Shirts Index</title>
-  </head>
-  <body>
-    <%- include('../_header') %>
-    
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>T-Shirts Index</title>
+  <style>
+    body {
+      background-color: black;
+      /* Light grey background */
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: red;
+      /* Dark grey text */
+      margin-top: 30px;
+    }
+
+    ul {
+      list-style-type: none;
+      /* Remove bullet points */
+      padding: 0;
+      margin: 20px auto;
+      max-width: 600px;
+      /* Center the list and set a max-width */
+    }
+
+    li {
+      background-color: #fff;
+      /* White background */
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      /* Rounded corners */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      /* Slight shadow */
+      transition: transform 0.2s;
+      /* Smooth hover effect */
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+      /* Lift the item on hover */
+    }
+
+    li a {
+      text-decoration: none;
+      color: #007BFF;
+      /* Blue link color */
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    li a:hover {
+      color: #0056b3;
+      /* Darker blue on hover */
+    }
+
+    p {
+      text-align: center;
+      color: red;
+      /* Light grey text */
+    }
+
+
+    button.GFG:hover {
+      background-color: rgba(0, 0, 255, 0.9);
+      /* Darker on hover */
+    }
+
+    .button {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('../_header') %>
+
     <% if (message) { %>
-      <p><%= message %></p>
-    <% } %>
-    
-    <h1>All T-Shits</h1>
-    <ul>
-      <% tshirts.forEach(tshirt => { %>
-        <li><a href="/tshirts/<%= tshirt._id %>"> <%= tshirt.name %></a></li>
-      <% }); %>
-    </ul>
-    <p> Click on any T-Shirt to edit or delete</p>
-    <a href="tshirts/new">Add a T-shirt</a>
-  </body>
+      <p>
+        <%= message %>
+      </p>
+      <% } %>
+
+        <h1>All T-Shirts</h1>
+        <ul>
+          <% tshirts.forEach(tshirt=> { %>
+            <li><a href="/tshirts/<%= tshirt._id %>">
+                <%= tshirt.name %>
+              </a></li>
+            <% }); %>
+        </ul>
+        <p> Click on any T-Shirt to edit or delete</p>
+        <div class="button">
+          <div>
+            <button onclick="window.location.href='/tshirts/new' ; " class="GFG">Add a T-Shirt</button>
+          </div>
+</body>
+
 </html>
