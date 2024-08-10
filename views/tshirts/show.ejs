@@ -8,14 +8,12 @@
     <style>
       body {
         background-color: black;
-        /* Black background for consistency */
         font-family: Arial, sans-serif;
       }
   
       h1 {
         text-align: center;
         color: red;
-        /* Red color to match your other pages */
         margin-top: 30px;
       }
   
@@ -36,14 +34,16 @@
       }
   
       button:hover {
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(51, 19, 209, 0.9);
       }
-  
+      
+      
     </style>
   </head>
   <body>
     <%- include('../_header') %>
 
+  
     <h1><%= tshirt.name %></h1>
 
     <div class="button-container">
@@ -53,5 +53,10 @@
 <br><br>
       <button onclick="window.location.href='/tshirts/<%= tshirt._id %>/edit' ; " class="GFG">Edit <%= tshirt.name %></button>
     </div>
+
+  
+    
+
+    
   </body>
 </html>

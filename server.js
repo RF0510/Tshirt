@@ -127,7 +127,7 @@ app.post('/tshirts', isAuthenticated, async (req, res) => {
       user: req.user._id,
     });
     await tshirt.save();
-    res.redirect('/tshirts');
+    res.redirect('/tshirts')
   } catch (err) {
     console.error(err);
     res.send("An error occurred while creating the T-shirt.");
@@ -139,7 +139,7 @@ app.get('/tshirts', isAuthenticated, async (req, res) => {
   try {
     const userTshirts = await Tshirt.find({ user: req.user._id });
     const message = req.query.message;
-    res.render('tshirts/index.ejs', { tshirts: userTshirts, message });
+    res.render('tshirts/index.ejs', { tshirts: userTshirts, message })
   } catch (err) {
     console.error(err);
     res.send("An error occurred while fetching the T-shirts.");
@@ -165,29 +165,29 @@ app.get('/tshirts/:tshirtId', async (req, res) => {
 
 app.delete('/tshirts/:tshirtId', isAuthenticated, async (req, res) => {
   try {
-    const tshirt = await Tshirt.findOneAndDelete({ _id: req.params.tshirtId, user: req.user._id });
+    const tshirt = await Tshirt.findOneAndDelete({ _id: req.params.tshirtId, user: req.user._id })
     if (!tshirt) {
-      return res.status(403).send("You are not authorized to delete this T-shirt.");
+      return res.status(403).send("You are not authorized to delete this T-shirt.")
     }
     res.redirect('/tshirts');
   } catch (err) {
     console.error(err);
-    res.send("An error occurred while deleting the T-shirt.");
+    res.send("An error occurred while deleting the T-shirt.")
   }
-});
+})
 
 
 
 app.get('/tshirts/:tshirtId/edit', isAuthenticated, async (req, res) => {
   try {
-    const tshirt = await Tshirt.findOne({ _id: req.params.tshirtId, user: req.user._id });
+    const tshirt = await Tshirt.findOne({ _id: req.params.tshirtId, user: req.user._id })
     if (!tshirt) {
-      return res.status(403).send("You are not authorized to edit this T-shirt.");
+      return res.status(403).send("You are not authorized to edit this T-shirt.")
     }
     res.render('tshirts/edit.ejs', { tshirt });
   } catch (err) {
     console.error(err);
-    res.send("An error occurred while fetching the T-shirt for editing.");
+    res.send("An error occurred while fetching the T-shirt for editing.")
   }
 });
 
@@ -199,12 +199,12 @@ app.put('/tshirts/:tshirtId', isAuthenticated, async (req, res) => {
       req.body
     );
     if (!tshirt) {
-      return res.status(403).send("You are not authorized to update this T-shirt.");
+      return res.status(403).send("You are not authorized to update this T-shirt.")
     }
-    res.redirect(`/tshirts/${req.params.tshirtId}`);
+    res.redirect(`/tshirts/${req.params.tshirtId}`)
   } catch (err) {
     console.error(err);
-    res.send("An error occurred while updating the T-shirt.");
+    res.send("An error occurred while updating the T-shirt.")
   }
 });
 
@@ -212,5 +212,5 @@ app.put('/tshirts/:tshirtId', isAuthenticated, async (req, res) => {
 
 
 app.listen(3000, () => {
-  console.log('Listening on port 3000');
+  console.log('Listening on port 3000')
 });

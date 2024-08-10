@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,8 +44,7 @@
         }
 
         button {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: red;
+            background-color: rgba(247, 242, 242, 0.808);
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
@@ -54,7 +54,7 @@
         }
 
         button:hover {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(18, 42, 167, 0.9);
         }
 
         .back-button {
@@ -65,26 +65,25 @@
         }
 
         .back-button:hover {
-            background-color: rgba(0, 255, 0, 0.1);
+            background-color: rgba(0, 0, 255, 0.62);
         }
-        button.GFG:hover {
-      background-color: rgba(0, 0, 255, 0.9);
-      /* Darker on hover */
-    }
     </style>
+
 <body>
-    <h1>Edit <%= tshirt.name %></h1>
+    <h1>Edit <%= tshirt.name %>
+    </h1>
 
     <form action="/tshirts/<%=tshirt._id%>?_method=PUT" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" name="name" value="<%= tshirt.name %>" /> 
-  
-      <label for="color">Color?</label>
-      <input type="text" name="color" value="<%= tshirt.color %>" />
-    
-      <button type="submit">Update T-Shirt</button>
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= tshirt.name %>" />
+
+        <label for="color">Color?</label>
+        <input type="text" name="color" value="<%= tshirt.color %>" />
+
+        <button type="submit">Update T-Shirt</button>
     </form>
 
     <button class="back-button" onclick="window.location.href='/tshirts' ; ">All T-Shirts</button>
-  </body>
-  </html>
+</body>
+
+</html>
